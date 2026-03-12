@@ -1,0 +1,515 @@
+/* ============================
+   Reset & Base
+   ============================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: #f0f4f8;
+  color: #1a202c;
+  min-height: 100vh;
+}
+
+/* ============================
+   Layout
+   ============================ */
+.app {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 24px 16px 48px;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #2d3748;
+  letter-spacing: -0.5px;
+}
+
+header .subtitle {
+  color: #718096;
+  margin-top: 6px;
+  font-size: 0.95rem;
+}
+
+footer {
+  text-align: center;
+  margin-top: 32px;
+  color: #a0aec0;
+  font-size: 0.8rem;
+}
+
+/* ============================
+   Card
+   ============================ */
+.card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 20px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08), 0 4px 16px rgba(0,0,0,0.04);
+}
+
+.section-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #2d3748;
+  margin-bottom: 14px;
+  display: block;
+}
+
+/* ============================
+   Recipe Name Input
+   ============================ */
+.recipe-name-input {
+  width: 100%;
+  padding: 10px 14px;
+  font-size: 1.1rem;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.2s;
+  font-weight: 500;
+}
+
+.recipe-name-input:focus {
+  border-color: #667eea;
+}
+
+/* ============================
+   Add Ingredient Row
+   ============================ */
+.add-ingredient-row {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.search-wrapper {
+  flex: 1 1 260px;
+  position: relative;
+}
+
+.search-wrapper input {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.search-wrapper input:focus {
+  border-color: #667eea;
+}
+
+.suggestions {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  background: #fff;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  list-style: none;
+  z-index: 100;
+  max-height: 240px;
+  overflow-y: auto;
+}
+
+.suggestions li {
+  padding: 10px 14px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.15s;
+}
+
+.suggestions li:hover, .suggestions li.active {
+  background: #ebf4ff;
+  color: #3182ce;
+}
+
+.suggestions li .cat {
+  font-size: 0.75rem;
+  color: #a0aec0;
+  margin-left: 6px;
+}
+
+.qty-unit-wrapper {
+  display: flex;
+  gap: 6px;
+  flex: 0 0 auto;
+}
+
+.qty-unit-wrapper input {
+  width: 90px;
+  padding: 10px 10px;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  outline: none;
+  text-align: center;
+  transition: border-color 0.2s;
+}
+
+.qty-unit-wrapper input:focus { border-color: #667eea; }
+
+.qty-unit-wrapper select {
+  padding: 10px 8px;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  outline: none;
+  background: #fff;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.qty-unit-wrapper select:focus { border-color: #667eea; }
+
+.hint {
+  font-size: 0.8rem;
+  color: #a0aec0;
+  margin-top: 6px;
+}
+.hint.error { color: #e53e3e; }
+
+/* ============================
+   Buttons
+   ============================ */
+.btn-primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 22px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.1s;
+  white-space: nowrap;
+}
+
+.btn-primary:hover { opacity: 0.9; }
+.btn-primary:active { transform: scale(0.97); }
+
+.btn-secondary {
+  background: #edf2f7;
+  color: #4a5568;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 22px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-secondary:hover { background: #e2e8f0; }
+
+/* ============================
+   Ingredients Table
+   ============================ */
+.table-wrapper {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+}
+
+thead tr {
+  background: #f7fafc;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+th {
+  padding: 10px 12px;
+  text-align: right;
+  font-weight: 600;
+  color: #718096;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+th:first-child, td:first-child { text-align: left; }
+
+td {
+  padding: 11px 12px;
+  text-align: right;
+  border-bottom: 1px solid #f0f4f8;
+  color: #2d3748;
+}
+
+tbody tr:last-child td { border-bottom: none; }
+tbody tr:hover { background: #fafbff; }
+
+td .ingredient-name { font-weight: 500; }
+td .ingredient-qty { font-size: 0.8rem; color: #a0aec0; }
+
+.delete-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #cbd5e0;
+  font-size: 1.1rem;
+  padding: 2px 6px;
+  border-radius: 4px;
+  transition: color 0.2s, background 0.2s;
+  line-height: 1;
+}
+
+.delete-btn:hover { color: #e53e3e; background: #fff5f5; }
+
+/* ============================
+   Summary Card
+   ============================ */
+.servings-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.servings-row label {
+  font-weight: 600;
+  color: #4a5568;
+}
+
+.servings-row input {
+  width: 70px;
+  padding: 7px 10px;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  outline: none;
+  text-align: center;
+  transition: border-color 0.2s;
+}
+
+.servings-row input:focus { border-color: #667eea; }
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.summary-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 18px 12px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.summary-block.calories { background: #fff5f5; }
+.summary-block.protein  { background: #f0fff4; }
+.summary-block.carbs    { background: #ebf8ff; }
+.summary-block.fat      { background: #fffff0; }
+.summary-block.fiber    { background: #faf5ff; }
+
+.summary-value {
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.calories .summary-value { color: #e53e3e; }
+.protein .summary-value  { color: #38a169; }
+.carbs .summary-value    { color: #3182ce; }
+.fat .summary-value      { color: #d69e2e; }
+.fiber .summary-value    { color: #805ad5; }
+
+.summary-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #718096;
+  margin-top: 4px;
+}
+
+.summary-sub {
+  font-size: 0.75rem;
+  color: #a0aec0;
+  margin-top: 3px;
+  min-height: 1em;
+}
+
+/* ============================
+   Macro Bar
+   ============================ */
+.macro-bar-section {
+  margin-bottom: 24px;
+}
+
+.macro-bar-section h3 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #4a5568;
+  margin-bottom: 10px;
+}
+
+.macro-bar {
+  height: 18px;
+  border-radius: 9px;
+  background: #edf2f7;
+  overflow: hidden;
+  display: flex;
+  margin-bottom: 8px;
+}
+
+.bar-protein { background: #48bb78; transition: width 0.5s ease; }
+.bar-carbs   { background: #4299e1; transition: width 0.5s ease; }
+.bar-fat     { background: #ecc94b; transition: width 0.5s ease; }
+
+.macro-legend {
+  font-size: 0.82rem;
+  color: #4a5568;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.legend-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.protein-dot { background: #48bb78; }
+.carbs-dot   { background: #4299e1; }
+.fat-dot     { background: #ecc94b; }
+
+/* ============================
+   Actions Row
+   ============================ */
+.action-row {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+
+/* ============================
+   Print styles
+   ============================ */
+@media print {
+  body { background: #fff; }
+  .card { box-shadow: none; border: 1px solid #e2e8f0; }
+  .add-ingredient-row, .action-row, .servings-row,
+  #ingredients-section th:last-child,
+  #ingredients-section td:last-child { display: none !important; }
+}
+
+/* ============================
+   Responsive
+   ============================ */
+@media (max-width: 600px) {
+  header h1 { font-size: 1.5rem; }
+  .add-ingredient-row { flex-direction: column; }
+  .qty-unit-wrapper { width: 100%; }
+  .qty-unit-wrapper input { flex: 1; }
+  .summary-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ============================
+   USDA API — Header & Status
+   ============================ */
+.header-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 12px;
+}
+
+.settings-btn {
+  background: none;
+  border: 1px solid #cbd5e0;
+  border-radius: 6px;
+  font-size: 1.2rem;
+  padding: 4px 8px;
+  cursor: pointer;
+  color: #718096;
+  margin-top: 4px;
+  flex-shrink: 0;
+}
+.settings-btn:hover { background: #edf2f7; color: #2d3748; }
+
+.api-status {
+  font-size: 0.78rem;
+  margin-top: 6px;
+  text-align: center;
+}
+.api-status.ok    { color: #38a169; }
+.api-status.warn  { color: #b7791f; }
+.api-status.error { color: #e53e3e; }
+
+.cat.usda-badge {
+  background: #ebf8ff;
+  color: #2b6cb0;
+  border-color: #bee3f8;
+}
+
+/* ============================
+   Modal
+   ============================ */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-box {
+  background: #fff;
+  border-radius: 12px;
+  padding: 28px 32px;
+  max-width: 420px;
+  width: 90%;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+}
+.modal-box h3 { margin-bottom: 10px; font-size: 1.1rem; color: #2d3748; }
+.modal-box p  { font-size: 0.875rem; color: #4a5568; margin-bottom: 16px; line-height: 1.5; }
+.modal-box a  { color: #3182ce; }
+
+.modal-box input[type="text"] {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #cbd5e0;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  margin-bottom: 16px;
+  font-family: monospace;
+  outline: none;
+}
+.modal-box input[type="text"]:focus {
+  border-color: #3182ce;
+  box-shadow: 0 0 0 3px rgba(49,130,206,0.15);
+}
+
+.modal-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
