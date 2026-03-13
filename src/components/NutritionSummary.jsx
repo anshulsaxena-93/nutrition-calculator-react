@@ -1,16 +1,32 @@
 import { useState } from "react";
 
 function computeTotals(recipe) {
-  let cal = 0, pro = 0, carb = 0, fat = 0, fib = 0;
+  const t = { cal: 0, pro: 0, carb: 0, fat: 0, fib: 0, satFat: 0, transFat: 0, chol: 0, sodium: 0, sugar: 0, addedSugar: 0 };
   recipe.forEach(entry => {
     const f = entry.grams / 100;
-    cal  += entry.ingredient.cal  * f;
-    pro  += entry.ingredient.pro  * f;
-    carb += entry.ingredient.carb * f;
-    fat  += entry.ingredient.fat  * f;
-    fib  += entry.ingredient.fib  * f;
+    const n = entry.ingredient;
+    t.cal       += n.cal       * f;
+    t.pro       += n.pro       * f;
+    t.carb      += n.carb      * f;
+    t.fat       += n.fat       * f;
+    t.fib       += n.fib       * f;
+    t.satFat    += (n.satFat    ?? 0) * f;
+    t.transFat  += (n.transFat  ?? 0) * f;
+    t.chol      += (n.chol      ?? 0) * f;
+    t.sodium    += (n.sodium    ?? 0) * f;
+    t.sugar     += (n.sugar     ?? 0) * f;
+    t.addedSugar+= (n.addedSugar?? 0) * f;
   });
-  return { cal, pro, carb, fat, fib };
+  return t;
+}
+
+function NutRow({ label, value, unit = "g", indent = false, bold = false, large = false }) {
+  return (
+    <div className={`nf-row${indent ? " nf-indent" : ""}${bold ? " nf-bold" : ""}${large ? " nf-large" : ""}`}>
+      <span className="nf-label">{label}</span>
+      <span className="nf-value">{value}{unit}</span>
+    </div>
+  );
 }
 
 export default function NutritionSummary({ recipe, onClear, recipeName }) {
@@ -20,6 +36,10 @@ export default function NutritionSummary({ recipe, onClear, recipeName }) {
 
   const t = computeTotals(recipe);
   const s = Math.max(1, servings);
+
+  const per = (v, decimals = 1) => (v / s).toFixed(decimals);
+  const perInt = (v) => Math.round(v / s);
+
   const macroKcal = t.pro * 4 + t.carb * 4 + t.fat * 9;
   const pPro  = macroKcal > 0 ? (t.pro * 4  / macroKcal * 100).toFixed(1) : 0;
   const pCarb = macroKcal > 0 ? (t.carb * 4 / macroKcal * 100).toFixed(1) : 0;
@@ -52,35 +72,70 @@ export default function NutritionSummary({ recipe, onClear, recipeName }) {
         <span className="hint">(divide totals by number of servings)</span>
       </div>
 
-      <div className="summary-grid">
-        {[
-          { label: "Calories", cls: "calories", val: Math.round(t.cal),         per: Math.round(t.cal / s),         unit: "" },
-          { label: "Protein",  cls: "protein",  val: t.pro.toFixed(1) + "g",    per: (t.pro / s).toFixed(1) + "g",  unit: "g" },
-          { label: "Carbs",    cls: "carbs",    val: t.carb.toFixed(1) + "g",   per: (t.carb / s).toFixed(1) + "g", unit: "g" },
-          { label: "Fat",      cls: "fat",      val: t.fat.toFixed(1) + "g",    per: (t.fat / s).toFixed(1) + "g",  unit: "g" },
-          { label: "Fiber",    cls: "fiber",    val: t.fib.toFixed(1) + "g",    per: (t.fib / s).toFixed(1) + "g",  unit: "g" },
-        ].map(({ label, cls, val, per }) => (
-          <div key={label} className={`summary-block ${cls}`}>
-            <span className="summary-value">{val}</span>
-            <span className="summary-label">{label}</span>
-            {s > 1 && <span className="summary-sub">{per} / serving</span>}
+      <div className="summary-layout">
+        {/* ── Nutrition Facts Panel ── */}
+        <div className="nf-panel">
+          <div className="nf-header">
+            <div className="nf-title">Nutrition Facts</div>
+            {s > 1 && <div className="nf-servings">{s} servings per recipe</div>}
           </div>
-        ))}
-      </div>
 
-      <div className="macro-bar-section">
-        <h3>Macro Breakdown</h3>
-        <div className="macro-bar">
-          <div className="bar-protein" style={{ width: pPro + "%" }} />
-          <div className="bar-carbs"   style={{ width: pCarb + "%" }} />
-          <div className="bar-fat"     style={{ width: pFat + "%" }} />
+          <div className="nf-calories-row">
+            <span>Calories</span>
+            <span className="nf-cal-value">{perInt(t.cal)}</span>
+          </div>
+
+          <div className="nf-divider-thick" />
+
+          <div className="nf-dv-header">% Daily Value*</div>
+
+          <NutRow label="Total Fat"        value={per(t.fat)}     bold />
+          <NutRow label="Saturated Fat"    value={per(t.satFat)}  indent />
+          <NutRow label="Trans Fat"        value={per(t.transFat, 2)} indent />
+          <NutRow label="Cholesterol"      value={perInt(t.chol)} unit="mg" bold />
+          <NutRow label="Sodium"           value={perInt(t.sodium)} unit="mg" bold />
+          <NutRow label="Total Carbohydrate" value={per(t.carb)} bold />
+          <NutRow label="Dietary Fiber"    value={per(t.fib)}     indent />
+          <NutRow label="Total Sugars"     value={per(t.sugar)}   indent />
+          <NutRow label="Added Sugars"     value={per(t.addedSugar)} indent />
+          <NutRow label="Protein"          value={per(t.pro)}     bold />
         </div>
-        <div className="macro-legend">
-          <span className="legend-dot protein-dot" /> Protein <span>{pPro}%</span>
-          &nbsp;&nbsp;
-          <span className="legend-dot carbs-dot" /> Carbs <span>{pCarb}%</span>
-          &nbsp;&nbsp;
-          <span className="legend-dot fat-dot" /> Fat <span>{pFat}%</span>
+
+        {/* ── Macro Bar ── */}
+        <div className="summary-right">
+          <div className="macro-bar-section">
+            <h3>Macro Breakdown</h3>
+            <div className="macro-bar">
+              <div className="bar-protein" style={{ width: pPro + "%" }} />
+              <div className="bar-carbs"   style={{ width: pCarb + "%" }} />
+              <div className="bar-fat"     style={{ width: pFat + "%" }} />
+            </div>
+            <div className="macro-legend">
+              <span className="legend-dot protein-dot" /> Protein <span>{pPro}%</span>
+              &nbsp;&nbsp;
+              <span className="legend-dot carbs-dot" /> Carbs <span>{pCarb}%</span>
+              &nbsp;&nbsp;
+              <span className="legend-dot fat-dot" /> Fat <span>{pFat}%</span>
+            </div>
+          </div>
+
+          <div className="quick-stats">
+            {[
+              { label: "Calories",  val: perInt(t.cal),        unit: "kcal", cls: "calories" },
+              { label: "Protein",   val: per(t.pro),           unit: "g",    cls: "protein"  },
+              { label: "Carbs",     val: per(t.carb),          unit: "g",    cls: "carbs"    },
+              { label: "Fat",       val: per(t.fat),           unit: "g",    cls: "fat"      },
+              { label: "Fiber",     val: per(t.fib),           unit: "g",    cls: "fiber"    },
+              { label: "Sodium",    val: perInt(t.sodium),     unit: "mg",   cls: "sodium"   },
+              { label: "Sugar",     val: per(t.sugar),         unit: "g",    cls: "sugar"    },
+            ].map(({ label, val, unit, cls }) => (
+              <div key={label} className={`qs-block ${cls}`}>
+                <span className="qs-value">{val}</span>
+                <span className="qs-unit">{unit}</span>
+                <span className="qs-label">{label}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
