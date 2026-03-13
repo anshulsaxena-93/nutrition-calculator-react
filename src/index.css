@@ -312,76 +312,113 @@ td .ingredient-qty { font-size: 0.8rem; color: #a0aec0; }
    Nutrition Facts Panel
    ============================ */
 .nf-panel {
-  flex: 0 0 260px;
+  flex: 0 0 280px;
   border: 2px solid #1a202c;
-  border-radius: 4px;
+  border-radius: 2px;
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 0.82rem;
-  padding: 6px 8px;
+  padding: 4px 6px;
   background: #fff;
+  color: #000;
 }
 
-.nf-header {
-  border-bottom: 8px solid #1a202c;
-  padding-bottom: 4px;
-  margin-bottom: 2px;
+.nf-title-block {
+  border-bottom: 1px solid #000;
+  padding-bottom: 2px;
 }
 
 .nf-title {
-  font-size: 1.6rem;
+  font-size: 1.9rem;
   font-weight: 900;
-  line-height: 1;
+  line-height: 1.05;
+  letter-spacing: -0.5px;
 }
 
-.nf-servings {
-  font-size: 0.8rem;
-  color: #4a5568;
+.nf-serving-info {
+  padding: 2px 0;
+  border-bottom: 7px solid #000;
 }
 
-.nf-calories-row {
+.nf-servings-count {
+  font-size: 0.78rem;
+}
+
+.nf-serving-size-row {
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
   font-weight: 700;
-  font-size: 0.9rem;
-  padding: 3px 0;
-  border-bottom: 4px solid #1a202c;
+  font-size: 0.85rem;
 }
 
-.nf-cal-value {
-  font-size: 2rem;
+.nf-thick-divider {
+  border-top: 7px solid #000;
+  margin: 0;
+}
+
+.nf-medium-divider {
+  border-top: 3px solid #000;
+  margin: 2px 0 0;
+}
+
+.nf-amount-label {
+  font-size: 0.75rem;
+  padding: 1px 0;
+}
+
+.nf-calories-block {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 0 3px;
+  border-bottom: 3px solid #000;
+}
+
+.nf-cal-label {
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.nf-cal-num {
+  font-size: 2.4rem;
   font-weight: 900;
   line-height: 1;
-}
-
-.nf-divider-thick {
-  border-bottom: 8px solid #1a202c;
-  margin: 2px 0;
 }
 
 .nf-dv-header {
   text-align: right;
   font-weight: 700;
-  font-size: 0.75rem;
-  border-bottom: 1px solid #a0aec0;
-  padding-bottom: 2px;
-  margin-bottom: 2px;
+  font-size: 0.73rem;
+  padding: 1px 0 2px;
+  border-bottom: 1px solid #aaa;
 }
 
 .nf-row {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  padding: 2px 0;
-  border-bottom: 1px solid #e2e8f0;
+  padding: 1.5px 0;
+  border-bottom: 1px solid #aaa;
   font-size: 0.8rem;
+  font-weight: 400;
 }
 
-.nf-row.nf-bold { font-weight: 700; }
-.nf-row.nf-indent { padding-left: 16px; font-weight: 400; }
-.nf-row.nf-large { font-size: 1rem; font-weight: 700; }
+.nf-row.nf-bold        { font-weight: 700; }
+.nf-row.nf-indent1     { padding-left: 14px; font-weight: 400; }
+.nf-row.nf-indent2     { padding-left: 28px; font-weight: 400; font-size: 0.76rem; }
+.nf-row.nf-protein-row { border-bottom: 7px solid #000; }
 
-.nf-label { color: #1a202c; }
-.nf-value { color: #2d3748; }
+.nf-val-inline {
+  font-weight: 400;
+}
+
+.nf-footnote {
+  font-size: 0.65rem;
+  color: #333;
+  margin-top: 4px;
+  line-height: 1.3;
+  border-top: 1px solid #aaa;
+  padding-top: 3px;
+}
 
 /* ============================
    Quick Stats Grid
