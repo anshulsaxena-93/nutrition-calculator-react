@@ -63,6 +63,25 @@ footer {
   display: block;
 }
 
+.section-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+.section-title-row .section-title {
+  margin-bottom: 0;
+}
+.off-toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  color: #718096;
+  cursor: pointer;
+  user-select: none;
+}
+
 /* ============================
    Recipe Name Input
    ============================ */
@@ -430,9 +449,6 @@ td .ingredient-qty { font-size: 0.8rem; color: #a0aec0; }
   .summary-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
-/* ============================
-   USDA API — Header & Status
-   ============================ */
 .header-top {
   display: flex;
   align-items: flex-start;
@@ -440,76 +456,8 @@ td .ingredient-qty { font-size: 0.8rem; color: #a0aec0; }
   gap: 12px;
 }
 
-.settings-btn {
-  background: none;
-  border: 1px solid #cbd5e0;
-  border-radius: 6px;
-  font-size: 1.2rem;
-  padding: 4px 8px;
-  cursor: pointer;
-  color: #718096;
-  margin-top: 4px;
-  flex-shrink: 0;
-}
-.settings-btn:hover { background: #edf2f7; color: #2d3748; }
-
-.api-status {
-  font-size: 0.78rem;
-  margin-top: 6px;
-  text-align: center;
-}
-.api-status.ok    { color: #38a169; }
-.api-status.warn  { color: #b7791f; }
-.api-status.error { color: #e53e3e; }
-
-.cat.usda-badge {
-  background: #ebf8ff;
-  color: #2b6cb0;
-  border-color: #bee3f8;
-}
-
-/* ============================
-   Modal
-   ============================ */
-.modal-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.45);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-}
-
-.modal-box {
-  background: #fff;
-  border-radius: 12px;
-  padding: 28px 32px;
-  max-width: 420px;
-  width: 90%;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
-}
-.modal-box h3 { margin-bottom: 10px; font-size: 1.1rem; color: #2d3748; }
-.modal-box p  { font-size: 0.875rem; color: #4a5568; margin-bottom: 16px; line-height: 1.5; }
-.modal-box a  { color: #3182ce; }
-
-.modal-box input[type="text"] {
-  width: 100%;
-  padding: 10px 12px;
-  border: 1px solid #cbd5e0;
-  border-radius: 6px;
-  font-size: 0.9rem;
-  margin-bottom: 16px;
-  font-family: monospace;
-  outline: none;
-}
-.modal-box input[type="text"]:focus {
-  border-color: #3182ce;
-  box-shadow: 0 0 0 3px rgba(49,130,206,0.15);
-}
-
-.modal-actions {
-  display: flex;
-  gap: 10px;
-  justify-content: flex-end;
+.cat.off-badge {
+  background: #fff5f5;
+  color: #c05621;
+  border-color: #fed7aa;
 }
