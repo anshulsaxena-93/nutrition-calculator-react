@@ -14,7 +14,7 @@ body {
    Layout
    ============================ */
 .app {
-  max-width: 900px;
+  max-width: 1000px;
   margin: 0 auto;
   padding: 24px 16px 48px;
 }
@@ -292,6 +292,191 @@ td .ingredient-qty { font-size: 0.8rem; color: #a0aec0; }
 .delete-btn:hover { color: #e53e3e; background: #fff5f5; }
 
 /* ============================
+   Summary Layout
+   ============================ */
+.summary-layout {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.summary-right {
+  flex: 1 1 260px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ============================
+   Nutrition Facts Panel
+   ============================ */
+.nf-panel {
+  flex: 0 0 280px;
+  border: 2px solid #1a202c;
+  border-radius: 2px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.82rem;
+  padding: 4px 6px;
+  background: #fff;
+  color: #000;
+}
+
+.nf-title-block {
+  border-bottom: 1px solid #000;
+  padding-bottom: 2px;
+}
+
+.nf-title {
+  font-size: 1.9rem;
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -0.5px;
+}
+
+.nf-serving-info {
+  padding: 2px 0;
+  border-bottom: 7px solid #000;
+}
+
+.nf-servings-count {
+  font-size: 0.78rem;
+}
+
+.nf-serving-size-row {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.nf-thick-divider {
+  border-top: 7px solid #000;
+  margin: 0;
+}
+
+.nf-medium-divider {
+  border-top: 3px solid #000;
+  margin: 2px 0 0;
+}
+
+.nf-amount-label {
+  font-size: 0.75rem;
+  padding: 1px 0;
+}
+
+.nf-calories-block {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 0 3px;
+  border-bottom: 3px solid #000;
+}
+
+.nf-cal-label {
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.nf-cal-num {
+  font-size: 2.4rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.nf-dv-header {
+  text-align: right;
+  font-weight: 700;
+  font-size: 0.73rem;
+  padding: 1px 0 2px;
+  border-bottom: 1px solid #aaa;
+}
+
+.nf-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 1.5px 0;
+  border-bottom: 1px solid #aaa;
+  font-size: 0.8rem;
+  font-weight: 400;
+}
+
+.nf-row.nf-bold        { font-weight: 700; }
+.nf-row.nf-indent1     { padding-left: 14px; font-weight: 400; }
+.nf-row.nf-indent2     { padding-left: 28px; font-weight: 400; font-size: 0.76rem; }
+.nf-row.nf-protein-row { border-bottom: 7px solid #000; }
+
+.nf-val-inline {
+  font-weight: 400;
+}
+
+.nf-footnote {
+  font-size: 0.65rem;
+  color: #333;
+  margin-top: 4px;
+  line-height: 1.3;
+  border-top: 1px solid #aaa;
+  padding-top: 3px;
+}
+
+/* ============================
+   Quick Stats Grid
+   ============================ */
+.quick-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+  gap: 10px;
+}
+
+.qs-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px 8px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.qs-block.calories   { background: #fff5f5; }
+.qs-block.protein    { background: #f0fff4; }
+.qs-block.carbs      { background: #ebf8ff; }
+.qs-block.fat        { background: #fffff0; }
+.qs-block.fiber      { background: #faf5ff; }
+.qs-block.sodium     { background: #fff8f0; }
+.qs-block.sugar      { background: #fef9e7; }
+
+.qs-value {
+  font-size: 1.3rem;
+  font-weight: 700;
+  line-height: 1.1;
+  color: #2d3748;
+}
+
+.qs-unit {
+  font-size: 0.7rem;
+  color: #718096;
+  line-height: 1;
+}
+
+.qs-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  color: #718096;
+  margin-top: 3px;
+}
+
+.qs-block.calories .qs-value { color: #e53e3e; }
+.qs-block.protein  .qs-value { color: #38a169; }
+.qs-block.carbs    .qs-value { color: #3182ce; }
+.qs-block.fat      .qs-value { color: #d69e2e; }
+.qs-block.fiber    .qs-value { color: #805ad5; }
+.qs-block.sodium   .qs-value { color: #dd6b20; }
+.qs-block.sugar    .qs-value { color: #b7791f; }
+
+/* ============================
    Summary Card
    ============================ */
 .servings-row {
@@ -320,55 +505,6 @@ td .ingredient-qty { font-size: 0.8rem; color: #a0aec0; }
 
 .servings-row input:focus { border-color: #667eea; }
 
-.summary-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-  gap: 14px;
-  margin-bottom: 24px;
-}
-
-.summary-block {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 18px 12px;
-  border-radius: 10px;
-  text-align: center;
-}
-
-.summary-block.calories { background: #fff5f5; }
-.summary-block.protein  { background: #f0fff4; }
-.summary-block.carbs    { background: #ebf8ff; }
-.summary-block.fat      { background: #fffff0; }
-.summary-block.fiber    { background: #faf5ff; }
-
-.summary-value {
-  font-size: 1.6rem;
-  font-weight: 700;
-  line-height: 1.1;
-}
-
-.calories .summary-value { color: #e53e3e; }
-.protein .summary-value  { color: #38a169; }
-.carbs .summary-value    { color: #3182ce; }
-.fat .summary-value      { color: #d69e2e; }
-.fiber .summary-value    { color: #805ad5; }
-
-.summary-label {
-  font-size: 0.78rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  color: #718096;
-  margin-top: 4px;
-}
-
-.summary-sub {
-  font-size: 0.75rem;
-  color: #a0aec0;
-  margin-top: 3px;
-  min-height: 1em;
-}
 
 /* ============================
    Macro Bar
@@ -446,7 +582,9 @@ td .ingredient-qty { font-size: 0.8rem; color: #a0aec0; }
   .add-ingredient-row { flex-direction: column; }
   .qty-unit-wrapper { width: 100%; }
   .qty-unit-wrapper input { flex: 1; }
-  .summary-grid { grid-template-columns: repeat(2, 1fr); }
+  .summary-layout { flex-direction: column; }
+  .nf-panel { flex: 1 1 auto; }
+  .quick-stats { grid-template-columns: repeat(3, 1fr); }
 }
 
 .header-top {
