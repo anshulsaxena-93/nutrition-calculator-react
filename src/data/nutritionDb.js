@@ -35,9 +35,12 @@ export const NUTRITION_DB = [
   { name: "Dosa (plain)",               cat: "Grains",    cal: 168, pro: 3.9,  carb: 29,   fat: 3.7,  fib: 1.2,  perPiece: 80 },
   { name: "Poha (cooked)",              cat: "Grains",    cal: 130, pro: 2.2,  carb: 28,   fat: 0.6,  fib: 0.8 },
   { name: "Upma (cooked)",              cat: "Grains",    cal: 160, pro: 3.5,  carb: 27,   fat: 4.5,  fib: 1.5 },
-  { name: "Semolina / Rava (dry)",      cat: "Grains",    cal: 360, pro: 12.7, carb: 73,   fat: 1.1,  fib: 3.9 },
+  { name: "Semolina / Rava / Suji (dry)", cat: "Grains",  cal: 360, pro: 12.7, carb: 73,   fat: 1.1,  fib: 3.9 },
   { name: "Oats (dry)",                 cat: "Grains",    cal: 389, pro: 17,   carb: 66,   fat: 7,    fib: 10.6 },
   { name: "Popcorn (plain)",            cat: "Grains",    cal: 387, pro: 13,   carb: 78,   fat: 4.5,  fib: 14.5 },
+  { name: "Corn Flakes",               cat: "Grains",    cal: 357, pro: 7.5,  carb: 84,   fat: 0.4,  fib: 1.2 },
+  { name: "Chiwda / Poha Chivda",      cat: "Grains",    cal: 420, pro: 8,    carb: 60,   fat: 18,   fib: 3 },
+  { name: "Rice Bran",                 cat: "Grains",    cal: 316, pro: 13.4, carb: 49.7, fat: 20.8, fib: 21 },
   { name: "Potato",                     cat: "Grains",    cal: 77,  pro: 2,    carb: 17,   fat: 0.1,  fib: 2.2 },
   { name: "Sweet Potato",               cat: "Grains",    cal: 86,  pro: 1.6,  carb: 20,   fat: 0.1,  fib: 3 },
 
@@ -67,6 +70,11 @@ export const NUTRITION_DB = [
   { name: "Colocasia / Arbi",           cat: "Vegetable", cal: 94,  pro: 3.4,  carb: 22,   fat: 0.1,  fib: 4.1 },
   { name: "Raw Banana / Kachha Kela",   cat: "Vegetable", cal: 89,  pro: 1.3,  carb: 23,   fat: 0.3,  fib: 2.6 },
   { name: "Mushroom",                   cat: "Vegetable", cal: 22,  pro: 3.1,  carb: 3.3,  fat: 0.3,  fib: 1 },
+  { name: "Lotus Stem / Bhein / Kamal Kakdi", cat: "Vegetable", cal: 74, pro: 1.6, carb: 17.2, fat: 0.1, fib: 4.9 },
+  { name: "Fresh Coriander / Dhaniya", cat: "Vegetable", cal: 23,  pro: 2.1,  carb: 3.7,  fat: 0.5,  fib: 2.8 },
+  { name: "Curry Leaves / Kadi Patta", cat: "Vegetable", cal: 108, pro: 6.1,  carb: 18.7, fat: 1,    fib: 6.4 },
+  { name: "Beetroot / Chukandar",      cat: "Vegetable", cal: 43,  pro: 1.6,  carb: 9.6,  fat: 0.2,  fib: 2.8 },
+  { name: "Ash Gourd / Petha",         cat: "Vegetable", cal: 13,  pro: 0.4,  carb: 3,    fat: 0.2,  fib: 2.9 },
 
   // ── Fruits ───────────────────────────────────────────────
   { name: "Mango / Aam",                cat: "Fruit",     cal: 60,  pro: 0.8,  carb: 15,   fat: 0.4,  fib: 1.6 },
@@ -105,6 +113,7 @@ export const NUTRITION_DB = [
   { name: "Coconut Oil",                cat: "Fats",      cal: 892, pro: 0,    carb: 0,    fat: 99,   fib: 0 },
   { name: "Sesame Oil / Til Oil",       cat: "Fats",      cal: 884, pro: 0,    carb: 0,    fat: 100,  fib: 0 },
   { name: "Vanaspati / Dalda",          cat: "Fats",      cal: 900, pro: 0,    carb: 0,    fat: 100,  fib: 0 },
+  { name: "Rice Bran Oil",             cat: "Fats",      cal: 884, pro: 0,    carb: 0,    fat: 100,  fib: 0 },
 
   // ── Nuts & Seeds ─────────────────────────────────────────
   { name: "Almonds / Badam",            cat: "Nuts",      cal: 579, pro: 21,   carb: 22,   fat: 50,   fib: 12.5 },
@@ -126,6 +135,20 @@ export const NUTRITION_DB = [
   { name: "Garam Masala",               cat: "Spice",     cal: 379, pro: 13,   carb: 50,   fat: 15,   fib: 16 },
   { name: "Cinnamon / Dalchini",        cat: "Spice",     cal: 247, pro: 4,    carb: 81,   fat: 1.2,  fib: 53.1 },
   { name: "Cardamom / Elaichi",         cat: "Spice",     cal: 311, pro: 10.8, carb: 68,   fat: 6.7,  fib: 28 },
+  { name: "Black Pepper / Kali Mirch",  cat: "Spice",     cal: 251, pro: 10,   carb: 64,   fat: 3.3,  fib: 25.3 },
+  { name: "Fennel Seeds / Saunf",       cat: "Spice",     cal: 345, pro: 15.8, carb: 52,   fat: 14.9, fib: 39.8 },
+  { name: "Carom Seeds / Ajwain",       cat: "Spice",     cal: 305, pro: 16,   carb: 43,   fat: 25,   fib: 21.2 },
+  { name: "Bay Leaf / Tej Patta",       cat: "Spice",     cal: 313, pro: 7.6,  carb: 75,   fat: 8.4,  fib: 26.3 },
+  { name: "Cloves / Laung",             cat: "Spice",     cal: 274, pro: 6,    carb: 66,   fat: 13,   fib: 33.9 },
+  { name: "Dry Mango Powder / Amchur",  cat: "Spice",     cal: 323, pro: 2.9,  carb: 84,   fat: 1.1,  fib: 5.9 },
+  { name: "Kashmiri Red Chilli / Kashmiri Mirch", cat: "Spice", cal: 280, pro: 10, carb: 50, fat: 10,  fib: 30 },
+  { name: "Asafoetida / Hing",          cat: "Spice",     cal: 297, pro: 4,    carb: 65,   fat: 1,    fib: 4.1 },
+  { name: "Kasuri Methi / Dried Fenugreek", cat: "Spice", cal: 323, pro: 23,   carb: 47,   fat: 6.5,  fib: 47.2 },
+  { name: "Chaat Masala",               cat: "Spice",     cal: 342, pro: 10,   carb: 60,   fat: 7,    fib: 18 },
+  { name: "Peri Peri Masala",          cat: "Spice",     cal: 330, pro: 11,   carb: 55,   fat: 12,   fib: 20 },
+  { name: "Onion Powder",              cat: "Spice",     cal: 341, pro: 10.4, carb: 79,   fat: 0.4,  fib: 9.2 },
+  { name: "Black Salt / Kala Namak",   cat: "Spice",     cal: 0,   pro: 0,    carb: 0,    fat: 0,    fib: 0 },
+  { name: "Roasted Cumin Powder / Bhuna Jeera", cat: "Spice", cal: 370, pro: 18, carb: 43, fat: 22,  fib: 11 },
 
   // ── Condiments & Sauces ──────────────────────────────────
   { name: "Tomato Ketchup",             cat: "Sauce",     cal: 101, pro: 1.3,  carb: 26,   fat: 0.1,  fib: 0.3 },
@@ -139,6 +162,7 @@ export const NUTRITION_DB = [
   { name: "White Sugar / Chini",        cat: "Sweetener", cal: 387, pro: 0,    carb: 100,  fat: 0,    fib: 0 },
   { name: "Honey / Shahad",             cat: "Sweetener", cal: 304, pro: 0.3,  carb: 82,   fat: 0,    fib: 0.2 },
   { name: "Mishri / Rock Sugar",        cat: "Sweetener", cal: 385, pro: 0,    carb: 99.5, fat: 0,    fib: 0 },
+  { name: "Bura Sugar / Boora",        cat: "Sweetener", cal: 387, pro: 0,    carb: 100,  fat: 0,    fib: 0 },
 
   // ── Basic Cooking Staples ─────────────────────────────────
   { name: "Salt / Namak",               cat: "Basic",     cal: 0,   pro: 0,    carb: 0,    fat: 0,    fib: 0 },
@@ -160,6 +184,11 @@ export const NUTRITION_DB = [
   { name: "Coconut Milk",               cat: "Basic",     cal: 197, pro: 2.3,  carb: 5.5,  fat: 21,   fib: 2.2 },
   { name: "Tomato Puree",               cat: "Basic",     cal: 38,  pro: 1.7,  carb: 9,    fat: 0.4,  fib: 1.7 },
   { name: "Curd / Dahi (for marinating)",cat: "Basic",    cal: 61,  pro: 3.4,  carb: 3.6,  fat: 3.4,  fib: 0 },
+  { name: "Cocoa Powder",               cat: "Basic",     cal: 228, pro: 19.6, carb: 57.9, fat: 13.7, fib: 33.2 },
+  { name: "Compound Chocolate",         cat: "Basic",     cal: 530, pro: 5.5,  carb: 60,   fat: 30,   fib: 2.5 },
+  { name: "Dark Chocolate",             cat: "Basic",     cal: 598, pro: 7.8,  carb: 46,   fat: 43,   fib: 10.9 },
+  { name: "Milk Powder",                cat: "Basic",     cal: 496, pro: 26,   carb: 38,   fat: 27,   fib: 0 },
+  { name: "Condensed Milk",             cat: "Basic",     cal: 321, pro: 8,    carb: 55,   fat: 8.7,  fib: 0 },
 ];
 
 export const UNIT_CONVERSIONS = {
