@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect, useCallback } from "react";
-import { NUTRITION_DB, UNIT_CONVERSIONS, searchOpenFoodFacts } from "../data/nutritionDb";
+import { NUTRITION_DB, UNIT_CONVERSIONS } from "../data/nutritionDb";
 
 export default function IngredientSearch({ onAdd }) {
   const [query, setQuery]               = useState("");
@@ -9,7 +9,6 @@ export default function IngredientSearch({ onAdd }) {
   const [qty, setQty]                   = useState("100");
   const [unit, setUnit]                 = useState("g");
   const [hint, setHint]                 = useState({ msg: "", type: "" });
-  const [useOFF, setUseOFF]             = useState(false);
   const debounceRef = useRef(null);
 
   const getLocalMatches = useCallback((q) =>
@@ -27,9 +26,8 @@ export default function IngredientSearch({ onAdd }) {
     setSuggestions(getLocalMatches(q));
 
     clearTimeout(debounceRef.current);
-    debounceRef.current = setTimeout(async () => {
-      const off = useOFF ? await searchOpenFoodFacts(q.trim()) : [];
-      setSuggestions([...getLocalMatches(q), ...off.slice(0, 5)]);
+    debounceRef.current = setTimeout(() => {
+      setSuggestions(getLocalMatches(q));
     }, 400);
   }
 
@@ -96,17 +94,7 @@ export default function IngredientSearch({ onAdd }) {
 
   return (
     <section className="card">
-      <div className="section-title-row">
-        <h2 className="section-title">Add Ingredient</h2>
-        <label className="off-toggle">
-          <input
-            type="checkbox"
-            checked={useOFF}
-            onChange={e => setUseOFF(e.target.checked)}
-          />
-          Search Open Food Facts
-        </label>
-      </div>
+      <h2 className="section-title">Add Ingredient</h2>
       <div className="add-ingredient-row">
         <div className="search-wrapper" ref={wrapRef}>
           <input
