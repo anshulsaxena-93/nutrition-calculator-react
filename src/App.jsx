@@ -25,7 +25,7 @@ export default function App() {
             <input
               type="text"
               id="recipe-name"
-              placeholder="e.g. Dal Tadka"
+              placeholder="e.g. Palak Crunch"
               className="recipe-name-input"
               value={recipeName}
               onChange={e => setRecipeName(e.target.value)}

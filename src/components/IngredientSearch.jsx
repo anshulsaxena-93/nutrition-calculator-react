@@ -100,7 +100,7 @@ export default function IngredientSearch({ onAdd }) {
           <input
             type="text"
             id="ingredient-search"
-            placeholder="Search ingredient (e.g. chicken, rice, egg…)"
+            placeholder="Search ingredient (e.g. peanuts, cashew, sugar…)"
             autoComplete="off"
             value={query}
             onChange={handleQueryChange}
