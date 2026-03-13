@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect, useCallback } from "react";
-import { NUTRITION_DB, UNIT_CONVERSIONS, searchUSDA } from "../data/nutritionDb";
+import { NUTRITION_DB, UNIT_CONVERSIONS, searchOpenFoodFacts } from "../data/nutritionDb";
 
-export default function IngredientSearch({ apiKey, onApiError, onAdd }) {
+export default function IngredientSearch({ onAdd }) {
   const [query, setQuery]               = useState("");
   const [suggestions, setSuggestions]   = useState([]);
   const [selected, setSelected]         = useState(null);
@@ -9,7 +9,7 @@ export default function IngredientSearch({ apiKey, onApiError, onAdd }) {
   const [qty, setQty]                   = useState("100");
   const [unit, setUnit]                 = useState("g");
   const [hint, setHint]                 = useState({ msg: "", type: "" });
-  const [usdaResults, setUsdaResults]   = useState([]);
+  const [useOFF, setUseOFF]             = useState(false);
   const debounceRef = useRef(null);
 
   const getLocalMatches = useCallback((q) =>
@@ -28,14 +28,8 @@ export default function IngredientSearch({ apiKey, onApiError, onAdd }) {
 
     clearTimeout(debounceRef.current);
     debounceRef.current = setTimeout(async () => {
-      if (!apiKey) return;
-      try {
-        const usda = await searchUSDA(q.trim(), apiKey);
-        setUsdaResults(usda);
-        setSuggestions([...getLocalMatches(q), ...usda.slice(0, 7)]);
-      } catch (err) {
-        if (err.message === "invalid_key") onApiError("Invalid API key — check settings.");
-      }
+      const off = useOFF ? await searchOpenFoodFacts(q.trim()) : [];
+      setSuggestions([...getLocalMatches(q), ...off.slice(0, 5)]);
     }, 400);
   }
 
@@ -102,7 +96,17 @@ export default function IngredientSearch({ apiKey, onApiError, onAdd }) {
 
   return (
     <section className="card">
-      <h2 className="section-title">Add Ingredient</h2>
+      <div className="section-title-row">
+        <h2 className="section-title">Add Ingredient</h2>
+        <label className="off-toggle">
+          <input
+            type="checkbox"
+            checked={useOFF}
+            onChange={e => setUseOFF(e.target.checked)}
+          />
+          Search Open Food Facts
+        </label>
+      </div>
       <div className="add-ingredient-row">
         <div className="search-wrapper" ref={wrapRef}>
           <input
@@ -118,13 +122,13 @@ export default function IngredientSearch({ apiKey, onApiError, onAdd }) {
             <ul className="suggestions">
               {suggestions.map((item, i) => (
                 <li
-                  key={item.source === "usda" ? `usda-${item.name}` : item.name}
+                  key={item.source === "off" ? `off-${item.name}` : item.name}
                   className={i === activeIdx ? "active" : ""}
                   onMouseDown={() => pickIngredient(item)}
                 >
                   {item.name}{" "}
-                  <span className={`cat${item.source === "usda" ? " usda-badge" : ""}`}>
-                    {item.source === "usda" ? "USDA" : item.cat}
+                  <span className={`cat${item.source === "off" ? " off-badge" : ""}`}>
+                    {item.source === "off" ? "India" : item.cat}
                   </span>
                 </li>
               ))}
