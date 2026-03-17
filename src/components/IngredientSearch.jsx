@@ -124,28 +124,29 @@ export default function IngredientSearch({ onAdd }) {
           )}
         </div>
 
-        <div className="qty-unit-wrapper">
-          <input
-            type="number"
-            id="qty"
-            placeholder="Amount"
-            min="0.1"
-            step="0.1"
-            value={qty}
-            onChange={e => setQty(e.target.value)}
-          />
-          <select id="unit" value={unit} onChange={e => setUnit(e.target.value)}>
-            <option value="g">g</option>
-            <option value="oz">oz</option>
-            <option value="ml">ml</option>
-            <option value="cup">cup</option>
-            <option value="tbsp">tbsp</option>
-            <option value="tsp">tsp</option>
-            <option value="piece">piece</option>
-          </select>
+        <div className="qty-add-row">
+          <div className="qty-unit-wrapper">
+            <input
+              type="number"
+              id="qty"
+              placeholder="Amount"
+              min="0.1"
+              step="0.1"
+              value={qty}
+              onChange={e => setQty(e.target.value)}
+            />
+            <select id="unit" value={unit} onChange={e => setUnit(e.target.value)}>
+              <option value="g">g</option>
+              <option value="oz">oz</option>
+              <option value="ml">ml</option>
+              <option value="cup">cup</option>
+              <option value="tbsp">tbsp</option>
+              <option value="tsp">tsp</option>
+              <option value="piece">piece</option>
+            </select>
+          </div>
+          <button className="btn-primary" onClick={handleAdd}>+ Add</button>
         </div>
-
-        <button className="btn-primary" onClick={handleAdd}>+ Add</button>
       </div>
       {hint.msg && <p className={`hint${hint.type === "error" ? " error" : ""}`}>{hint.msg}</p>}
     </section>

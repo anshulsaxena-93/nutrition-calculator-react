@@ -162,6 +162,13 @@ footer {
   margin-left: 6px;
 }
 
+.qty-add-row {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  flex: 0 0 auto;
+}
+
 .qty-unit-wrapper {
   display: flex;
   gap: 6px;
@@ -578,13 +585,37 @@ td .ingredient-qty { font-size: 0.8rem; color: #a0aec0; }
    Responsive
    ============================ */
 @media (max-width: 600px) {
-  header h1 { font-size: 1.5rem; }
-  .add-ingredient-row { flex-direction: column; }
-  .qty-unit-wrapper { width: 100%; }
-  .qty-unit-wrapper input { flex: 1; }
+  /* Tighter overall padding */
+  .app { padding: 12px 10px 32px; }
+  .card { padding: 16px; }
+
+  /* Header */
+  header { margin-bottom: 16px; }
+  header h1 { font-size: 1.4rem; }
+  header .subtitle { font-size: 0.82rem; }
+
+  /* Add Ingredient: search full-width, then qty+unit+button on one row below */
+  .add-ingredient-row { flex-direction: column; gap: 8px; }
+  .search-wrapper { width: 100%; }
+  .qty-add-row { width: 100%; flex: unset; }
+  .qty-unit-wrapper { flex: 1; min-width: 0; }
+  .qty-unit-wrapper input { flex: 1; min-width: 0; width: auto; }
+
+  /* Bigger tap targets for suggestion list items */
+  .suggestions li { padding: 12px 14px; font-size: 0.95rem; }
+
+  /* Summary */
   .summary-layout { flex-direction: column; }
   .nf-panel { flex: 1 1 auto; }
   .quick-stats { grid-template-columns: repeat(3, 1fr); }
+
+  /* Servings row compact */
+  .servings-row { gap: 8px; }
+  .servings-row .hint { font-size: 0.75rem; }
+
+  /* Action buttons full width */
+  .action-row { flex-direction: column-reverse; }
+  .action-row button { width: 100%; padding: 12px; }
 }
 
 .header-top {
