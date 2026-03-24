@@ -126,6 +126,11 @@ export const NUTRITION_DB = [
   { name: "Cumin Seeds / Jeera",        cat: "Nuts",      cal: 375, pro: 18,   carb: 44,   fat: 22,   fib: 10.5, satFat: 1.5,  transFat: 0,  chol: 0,   sodium: 168,  sugar: 2.3,  addedSugar: 0 },
   { name: "Flax Seeds / Alsi",          cat: "Nuts",      cal: 534, pro: 18,   carb: 29,   fat: 42,   fib: 27.3, satFat: 3.7,  transFat: 0,  chol: 0,   sodium: 30,   sugar: 1.6,  addedSugar: 0 },
   { name: "Poppy Seeds / Khus Khus",    cat: "Nuts",      cal: 525, pro: 18,   carb: 28,   fat: 42,   fib: 19.5, satFat: 4.5,  transFat: 0,  chol: 0,   sodium: 26,   sugar: 2.9,  addedSugar: 0 },
+  { name: "Sunflower Seeds",            cat: "Nuts",      cal: 584, pro: 20.8, carb: 20,   fat: 51.5, fib: 8.6,  satFat: 4.5,  transFat: 0,  chol: 0,   sodium: 9,    sugar: 2.6,  addedSugar: 0 },
+  { name: "Chia Seeds",                 cat: "Nuts",      cal: 486, pro: 17,   carb: 42,   fat: 31,   fib: 34.4, satFat: 3.3,  transFat: 0,  chol: 0,   sodium: 16,   sugar: 0,    addedSugar: 0 },
+  { name: "Pumpkin Seeds / Kaddu Beej", cat: "Nuts",      cal: 559, pro: 30,   carb: 11,   fat: 49,   fib: 6.0,  satFat: 8.7,  transFat: 0,  chol: 0,   sodium: 7,    sugar: 1.4,  addedSugar: 0 },
+  { name: "Watermelon Seeds / Tarbuj Beej", cat: "Nuts",  cal: 557, pro: 28,   carb: 15.3, fat: 47,   fib: 0.5,  satFat: 9.8,  transFat: 0,  chol: 0,   sodium: 99,   sugar: 3.3,  addedSugar: 0 },
+  { name: "Muskmelon Seeds / Kharbuja Beej", cat: "Nuts", cal: 555, pro: 24,   carb: 18,   fat: 47,   fib: 0,    satFat: 9.8,  transFat: 0,  chol: 0,   sodium: 10,   sugar: 0,    addedSugar: 0 },
 
   // ── Spices ───────────────────────────────────────────────
   { name: "Turmeric / Haldi",           cat: "Spice",     cal: 354, pro: 8,    carb: 65,   fat: 10,   fib: 21.1, satFat: 3.1,  transFat: 0,  chol: 0,   sodium: 38,   sugar: 3.2,  addedSugar: 0 },
