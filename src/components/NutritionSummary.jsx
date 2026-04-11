@@ -37,7 +37,8 @@ export default function NutritionSummary({ recipe, onClear, recipeName }) {
   const pi = (v)        => Math.round(v / s);
   const pdv = (v, ref)  => { const pct = dv(v / s, ref); return pct !== null ? pct + "%" : ""; };
 
-  const servingGrams = Math.round(t.grams / s);
+  const servingGramsRaw = t.grams / s;
+  const servingGrams = servingGramsRaw % 1 === 0 ? servingGramsRaw : servingGramsRaw.toFixed(2);
 
   const macroKcal = t.pro * 4 + t.carb * 4 + t.fat * 9;
   const pPro  = macroKcal > 0 ? (t.pro * 4  / macroKcal * 100).toFixed(1) : 0;
