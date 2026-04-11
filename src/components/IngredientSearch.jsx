@@ -130,8 +130,8 @@ export default function IngredientSearch({ onAdd }) {
               type="number"
               id="qty"
               placeholder="Amount"
-              min="0.1"
-              step="0.1"
+              min="0"
+              step="any"
               value={qty}
               onChange={e => setQty(e.target.value)}
             />
