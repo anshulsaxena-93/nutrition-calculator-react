@@ -31,10 +31,10 @@ export default function IngredientsTable({ recipe, onRemove }) {
                   <td>
                     <div className="ingredient-name">{entry.ingredient.name}</div>
                     <div className="ingredient-qty">
-                      {entry.qty} {entry.unit} ({entry.grams.toFixed(0)}g)
+                      {entry.qty} {entry.unit} ({entry.grams % 1 === 0 ? entry.grams : entry.grams.toFixed(2)}g)
                     </div>
                   </td>
-                  <td>{entry.grams.toFixed(0)}g</td>
+                  <td>{entry.grams % 1 === 0 ? entry.grams : entry.grams.toFixed(2)}g</td>
                   <td>{cal.toFixed(0)}</td>
                   <td>{pro.toFixed(1)}g</td>
                   <td>{carb.toFixed(1)}g</td>
